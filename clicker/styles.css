@@ -1,52 +1,142 @@
 /* styles.css */
 
+html {
+    font-size: clamp(14px, calc(0.6vw + 10px), 20px);
+}
+
 body {
+    display: flex; /* Use flexbox for easier layout */
+    flex-direction: column; /* Arrange elements vertically */
+    justify-content: center; /* Center elements vertically */
+    align-items: center; /* Center elements horizontally */
     font-family: "Dosis", sans-serif;
-    background-color: #333;
+    background-image: linear-gradient(#a5fbff, #ffffff);
+    font-size: 1.6rem;
+}
+
+body.scaled {
+    transform-origin: top left; /* Important: Scales from the top-left corner */
+    transform: scale(0.75); /* Adjust this value as needed */
+    width: 133.33vw; /* Compensate for the scale */
+    height: 133.33vh;
+    overflow: hidden; /* Hide content that overflows due to scaling*/
 }
 
 .title {
     text-align: center;
-    color: #ffffff;
+    color: #0020aa;
+    font-size: 5rem;
 }
 
 #mainDiv {
-    border: 2px solid #ccc;
-    padding: 10px;
-    margin: 10px auto;
-    width: 200px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: white;
+    max-width: 100%;
+    border: 0.125rem solid #ccc;
+    padding: 0.625rem;
+    margin: 0.625rem auto;
+    width: 35rem;
+    height: 5rem;
+    text-align: match-parent;
+    font-size: 3rem;
+    border-radius: 0.625rem;
+    background-image: linear-gradient(#ffffff, #a5fbff);
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #009ebc;
-    border: none;
-    color: white;
+.boton {
+    padding: 0.625rem 1.25rem;
+    background-image: linear-gradient(#ffffff, #a5fbff);
+    border: 0.3rem double #00ffbb;
+    color: #000000;
     text-align: center;
     text-decoration: none;
     display: block;
-    margin: 10px auto;
-    font-size: 32px;
+    margin: 0.625rem auto;
+    font-size: 5rem;
+
     cursor: pointer;
     font-family: Dosis;
-    border-radius: 20px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
+    border-radius: 1.25rem;
+    box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.2);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
+.boton:hover {
+    transform: scale(1.1);
+    box-shadow: 0.1875rem 0.1875rem 0.4375rem rgba(0, 0, 0, 0.3);
+}
 
+.boton:active {
+    transform: scale(0.9);
+}
+
+.buddyboton {
+    padding: 0.625rem 1.25rem;
+    background-image: linear-gradient(#ffffff, #a5ffa9);
+    border: 0.3rem double #00ffbb;
+    color: #000000;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 0.625rem auto;
+    font-size: 3rem;
+
+    cursor: pointer;
+    font-family: Dosis;
+    border-radius: 1.25rem;
+    box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.2);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.buddyboton:hover {
+    transform: scale(1.1);
+    box-shadow: 0.1875rem 0.1875rem 0.4375rem rgba(0, 0, 0, 0.3);
+}
+
+.buddyboton:active {
+    transform: scale(0.9);
+}
 
 .skibidi {
     text-align: center;
-    color: indianred
+    color: indianred;
 }
 
 #cpsDisplay {
     text-align: center;
-    font-size: 1.2em;
-    margin-top: 10px;
+    font-size: 1.2rem;
+    margin-top: 0.625rem;
     color: #555;
+}
+
+#achievements ul {
+    /* Added ul selector to target the list items */
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+}
+
+#achievements li {
+    padding: 5px; /* Add some padding to list items */
+    border: 1px solid #ccc; /* Add borders to each list item */
+    margin-bottom: 5px; /* Add spacing between list items */
+}
+
+.locked {
+    color: gray;
+}
+
+.unlocked {
+    color: green;
+    font-weight: bold;
+}
+
+@keyframes scrollUp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
 }
