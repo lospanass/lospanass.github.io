@@ -1,60 +1,61 @@
-/* styles.css */
+* {
+    box-sizing: border-box;
+}
 
 html {
-    font-size: clamp(14px, calc(0.6vw + 10px), 20px);
+    font-size: 16px;
 }
 
 body {
-    display: flex; /* Use flexbox for easier layout */
-    flex-direction: column; /* Arrange elements vertically */
-    justify-content: center; /* Center elements vertically */
-    align-items: center; /* Center elements horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: linear-gradient(#ffffff, #c4fcff);
     font-family: "Dosis", sans-serif;
-    background-image: linear-gradient(#a5fbff, #ffffff);
-    font-size: 1.6rem;
+
+    min-height: 100vh;
 }
 
-body.scaled {
-    transform-origin: top left; /* Important: Scales from the top-left corner */
-    transform: scale(0.75); /* Adjust this value as needed */
-    width: 133.33vw; /* Compensate for the scale */
-    height: 133.33vh;
-    overflow: hidden; /* Hide content that overflows due to scaling*/
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 800px;
+    width: 90%;
 }
 
 .title {
     text-align: center;
     color: #0020aa;
-    font-size: 5rem;
+    font-size: clamp(2.5rem, 7vw, 4rem);
 }
 
+#upgrades {
+    text-align: center;
+}
 #mainDiv {
-    max-width: 100%;
     border: 0.125rem solid #ccc;
     padding: 0.625rem;
-    margin: 0.625rem auto;
-    width: 35rem;
-    height: 5rem;
-    text-align: match-parent;
-    font-size: 3rem;
+    text-align: center;
     border-radius: 0.625rem;
-    background-image: linear-gradient(#ffffff, #a5fbff);
+    background-image: linear-gradient(#ffffff, #ffffff);
+    font-size: clamp(1rem, 3vw, 2rem);
 }
 
 .boton {
-    padding: 0.625rem 1.25rem;
+    padding: 1rem 2rem; /* Increased padding */
+    font-size: clamp(2.5rem, 7vw, 4rem); /* Increased and clamped font size */
     background-image: linear-gradient(#ffffff, #a5fbff);
     border: 0.3rem double #00ffbb;
-    color: #000000;
     text-align: center;
     text-decoration: none;
     display: block;
     margin: 0.625rem auto;
-    font-size: 5rem;
-
     cursor: pointer;
     font-family: Dosis;
-    border-radius: 1.25rem;
+    border-radius: 2.5rem;
     box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.2);
     transition:
         transform 0.2s ease,
@@ -78,9 +79,52 @@ body.scaled {
     text-align: center;
     text-decoration: none;
     display: block;
-    margin: 0.625rem auto;
-    font-size: 3rem;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    cursor: pointer;
+    font-family: Dosis;
+    border-radius: 1.25rem;
+    box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.2);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
 
+.nudgeboton {
+    padding: 0.625rem 1.25rem;
+    background-image: linear-gradient(#ffffff, #a5ffa9); /* Or a different color */
+    border: 0.3rem double #00ffbb; /* Or a different border */
+    color: #000000;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    cursor: pointer;
+    font-family: Dosis;
+    border-radius: 1.25rem;
+    box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.2);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.nudgeboton:hover {
+    transform: scale(1.1);
+    box-shadow: 0.1875rem 0.1875rem 0.4375rem rgba(0, 0, 0, 0.3);
+}
+
+.nudgeboton:active {
+    transform: scale(0.9);
+}
+
+.saveload {
+    padding: 0.625rem 1.25rem;
+    background-image: linear-gradient(#ffffff, #a5ffa9);
+    border: 0.3rem double #00ffbb;
+    color: #000000;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: clamp(1.5rem, 1vw, 2rem);
     cursor: pointer;
     font-family: Dosis;
     border-radius: 1.25rem;
@@ -101,6 +145,7 @@ body.scaled {
 
 .skibidi {
     text-align: center;
+    font-size: 2rem;
     color: indianred;
 }
 
@@ -111,16 +156,15 @@ body.scaled {
     color: #555;
 }
 
-#achievements ul {
-    /* Added ul selector to target the list items */
-    list-style: none; /* Remove bullet points */
-    padding: 0; /* Remove default padding */
+#achievements {
+    text-align: left;
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
+    margin-top: 20px;
 }
 
-#achievements li {
-    padding: 5px; /* Add some padding to list items */
-    border: 1px solid #ccc; /* Add borders to each list item */
-    margin-bottom: 5px; /* Add spacing between list items */
+.cantidadbuddy {
+    font-size: 1.5rem;
+    text-align: center;
 }
 
 .locked {
@@ -132,11 +176,25 @@ body.scaled {
     font-weight: bold;
 }
 
-@keyframes scrollUp {
-    from {
-        transform: translateY(0);
+.shake {
+    animation: shake 0.5s;
+    animation-iteration-count: 3;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
     }
-    to {
-        transform: translateY(-100%);
+    25% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    75% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0);
     }
 }

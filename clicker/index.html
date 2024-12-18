@@ -1,33 +1,63 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>guille clicker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nudger | guille's stuff</title>
+    <meta content="🫨 Nudger" property="og:title" />
+    <meta content="Un clicker basado en Windows Live Messenger" property="og:description" />
+    <meta content="https://guilles-stuff.click/clicker" property="og:url" />
+    <meta content="https://i.gifer.com/origin/dc/dc9122a4c67ff1272971880b17b21ce3_w200.gif" property="og:image" />
+    <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
   </head>
 
-  <body class="scaled">
-    <h1 class="title">guille clicker</h1>
-    <div id="mainDiv">presiona el botón</div>
-    <div id="cpsDisplay">CPS: 0.00</div>
-    <audio id="clickSound" src="assets/sonido/click.mp3" preload="auto"></audio>
-    <br />
-    <h1><button class="boton" onclick="buttonClicked()">el botón</button></h1>
-    <button class="buddyboton" onclick="buyBuddy()">Buddy - da 1 CPS (20 clicks)</button>
-    <div id="buddyCount">Buddies: 0</div>
+  <body>
+    <div class="container">
+      <div id="saveArea" style="display: none">
+        <textarea
+          class="saveload"
+          id="saveOutput"
+          readonly
+          style="width: 90%; max-width: 600px; height: 100px; margin: 10px auto; resize: vertical"></textarea>
+        <button class="saveload" id="closeSave">X</button>
+      </div>
+      <button id="saveGameButton" class="saveload" onclick="saveToBase64();">Guardar progreso</button>
 
-    <p class="skibidi">si no sabes leer: 👇🖱️▶️</p>
+      <h1 class="title">🫨 Nudger</h1>
 
-    <div id="achievements">
-      <h2>Logros re epicazos</h2>
-      <ul>
-        <li id="ACH_FIRST_BUDDY" class="locked">Primer Buddy</li>
-        <li id="ACH_1000_CLICKS" class="locked">Maestro de los Clicks (1000 Clicks)</li>
-      </ul>
+      <div id="game-area">
+        <h1><button class="boton" onclick="buttonClicked()">el botón</button></h1>
+        <div id="mainDiv">Presiona el botón</div>
+
+        <audio id="clickSound" src="assets/sonido/click.mp3" preload="auto"></audio>
+        <audio id="nudgeSound" src="assets/sonido/nudge.mp3" preload="auto"></audio>
+      </div>
+
+      <h1>Mejoras</h1>
+      <div id="upgrades">
+        <button class="buddyboton" onclick="buyBuddy()">Buddy - da 1 CPS (20 clicks)</button>
+        <div id="buddyCount" class="cantidadbuddy">Tienes 0 Buddies actualmente.</div>
+
+        <button class="nudgeboton" onclick="buyNudge()">Nudge - da 5 CPS (200 clicks)</button>
+        <div id="nudgeCount" class="cantidadnudge">Tienes 0 Nudges actualmente.</div>
+      </div>
+
+      <div id="achievements">
+        <h2>Logros re epicazos</h2>
+        <ul>
+          <li id="ACH_FIRST_BUDDY" class="locked">👤 Primer Buddy 👤</li>
+          <li id="ACH_10_BUDDIES" class="locked">🫂 10 Buddies 🫂</li>
+          <li id="ACH_FIRST_NUDGE" class="locked">🫨 Primer Nudge 🫨</li>
+          <li id="ACH_1000_CLICKS" class="locked">⚡ Maestro de los Clicks (1000 Clicks) 🖱️</li>
+        </ul>
+      </div>
     </div>
+
+    <script src="script.js" defer></script>
   </body>
 </html>
